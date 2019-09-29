@@ -1,0 +1,9 @@
+[Unit]
+Description=Hosting account {{name}}
+
+[Service]
+Type=simple
+ExecStart={{command}}
+
+[Install]
+WantedBy=multi-user.target
