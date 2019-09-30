@@ -28,16 +28,17 @@ source "lib/systemd.sh"
 
 # Initialise sub-sections
 accounts:init
-msg:init
-nginx:init
-port:init
-route:init
-systemd:init
+# msg:init
+# nginx:init
+# port:init
+# route:init
+# systemd:init
 
 # Routing
 route="$1"
 case "$route" in
     "setup")
+        route:setup
         ;;
 
     "add")

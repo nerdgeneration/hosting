@@ -32,4 +32,4 @@ test-deps/bats:
 
 test: test-deps/bats
 	docker build -f test-assets/Dockerfile -t nerdgeneration/hosting-testsuite . \
-		&& docker run -it nerdgeneration/hosting-testsuite
+		&& docker run --cap-add SYS_ADMIN -it nerdgeneration/hosting-testsuite

@@ -6,13 +6,13 @@ route:setup() {
     yum install --assumeyes https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
     # ... but manually configure the Remi PHP
-    install --user=root --group=root --mode=u=rw,go= lib/assets/hosting.repo /etc/yum.repos.d/hosting.repo
+    install --owner=root --group=root --mode=u=rw,go=r assets/hosting.repo /etc/yum.repos.d/hosting.repo
 
     # Amazon provides it's own docker setup
     amazon-linux-extras install docker
 
     # Install nginx, Let's Encrypt and PHP FastCGI (+common packages)
-    yum install nginx certbot php-fpm php-xml php-xmlrpc php-phar php-pdo php-mysqlnd php-openssl php-mbstring php-intl
+    yum install --assumeyes nginx certbot php-fpm php-xml php-xmlrpc php-phar php-pdo php-mysqlnd php-openssl php-mbstring php-intl
 
     # Configure certbot to update SSL certificates twice a day (this is their code)
     echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew" \
